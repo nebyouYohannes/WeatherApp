@@ -8,7 +8,7 @@ function App() {
   const [search, setSearch] = useState('');
   const [result, setResult] = useState({});
 
-  useEffect(() => {
+  const handleSearch = () => {
     if (search !== '') {
       axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=b1fd6e14799699504191b6bdbcadfc35&units=metric`)
         .then(response => {
@@ -18,21 +18,26 @@ function App() {
           console.error(error);
         });
     }
-  }, [search]);
-  
+  }
 
   return (
     <>
       <div className='container'>
         <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
-        <button onClick={() => setSearch(search)} >Search</button>
+        <button onClick={handleSearch}>Search</button>
       </div>
       <div>
-        <table>
-          <tr>
-            <td>{ result.main.humidity}</td>
-          </tr>
-        </table>
+      {result.main && (
+              <>
+              <h1>{result.name}</h1>
+              <h1>{result.main.temp} °</h1>
+              <h2>{result.main.temp_min} {result.main.temp_max}</h2>
+              <h2>{result.weather[0].description}</h2>
+              
+              </>
+              
+              
+      )}
       </div>
     </>
   )
