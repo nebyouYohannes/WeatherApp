@@ -23,21 +23,40 @@ function App() {
   return (
     <>
       <div className='container'>
-        <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
+        <input className='inputcity' type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
         <button onClick={handleSearch}>Search</button>
-      </div>
+      
       <div>
       {result.main && (
               <>
+              <div>
               <h1>{result.name}</h1>
+              { result.weather[0].main === 'Clouds' ? (
+                <img src={viteLogo} alt="" />
+              ): result.weather[0].main === 'Thunderstorm' ?(
+                <img src={reactLogo} ></img>
+              ) : result.weather[0].main === 'Drizzle' ?(
+                <img src="" alt="" />
+              ): result.weather[0].main === 'Rain' ?(
+                <img src='' alt="" />
+              ): result.weather[0].main === 'Snow' ?(
+                <img src="" alt="" />
+              ): result.weather[0].main === 'Clear' ?(
+                <img src="" alt="" />
+              ): result.weather[0].main === 'Atmosphere' ?(
+                <img src="" alt="" />
+              ): null}
               <h1>{result.main.temp} °</h1>
+              
               <h2>{result.main.temp_min} {result.main.temp_max}</h2>
               <h2>{result.weather[0].description}</h2>
-              
+              </div>
               </>
               
               
+              
       )}
+      </div>
       </div>
     </>
   )
