@@ -32,7 +32,7 @@ function App() {
               <div>
               <h1>{result.name}</h1>
               { result.weather[0].main === 'Clouds' ? (
-                <img src={viteLogo} alt="" />
+                <img src='' alt="" />
               ): result.weather[0].main === 'Thunderstorm' ?(
                 <img src={reactLogo} ></img>
               ) : result.weather[0].main === 'Drizzle' ?(
