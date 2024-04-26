@@ -1,4 +1,10 @@
 import { useState, useEffect } from 'react'
+import clouds from './assets/cloudy.png'
+import snow from './assets/snow.png'
+import drizzle from './assets/drizzle.png'
+import clear from './assets/sun.png'
+import storm from './assets/storm.png'
+import rain from './assets/rain.png'
 
 import './App.css'
 import axios from 'axios'
@@ -23,33 +29,39 @@ function App() {
     <>
       <div className='container'>
         <input className='inputcity' type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
-        <button onClick={handleSearch}>Search</button>
+        <button onClick={handleSearch}>aa</button>
       
       <div>
       {result.main && (
               <>
-              <div>
+              <div className='info'>
               <h1>{result.name}</h1>
               { result.weather[0].main === 'Clouds' ? (
-                <img src='' alt="" />
+                <img src={clouds} alt="" />
               ): result.weather[0].main === 'Thunderstorm' ?(
-                <img src={reactLogo} ></img>
+                <img src={storm} ></img>
               ) : result.weather[0].main === 'Drizzle' ?(
-                <img src="" alt="" />
+                <img src={drizzle} alt="" />
               ): result.weather[0].main === 'Rain' ?(
-                <img src='' alt="" />
+                <img src={rain} alt="" />
               ): result.weather[0].main === 'Snow' ?(
-                <img src="" alt="" />
+                <img src={snow} alt="" />
               ): result.weather[0].main === 'Clear' ?(
-                <img src="" alt="" />
+                <img src={clear} alt="" />
               ): result.weather[0].main === 'Atmosphere' ?(
-                <img src="" alt="" />
+                <img src={clouds} alt="" />
               ): null}
               <h1>{result.main.temp} °</h1>
               
               <h2>{result.main.temp_min} {result.main.temp_max}</h2>
               <h2>{result.weather[0].description}</h2>
+              
+
+             
+
               </div>
+              
+
               </>
               
               
